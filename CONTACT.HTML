@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KASHIF REHMAN | Contact</title>
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="glass-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1 class="name">Get in Touch</h1>
+    <div class="divider"></div>
+
+    <form class="contact-form">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Your Name" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Your Email" required>
+      </div>
+      
+      <div class="form-group">
+        <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="cta submit-btn">Send Message</button>
+
+        <a id="whatsappLink" class="cta whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </form>
+  </section>
+
+  <div id="footer-container"></div>
+  <script src="footer.js"></script>
+
+  <script>
+    function sendMessage() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let message = document.getElementById("message").value;
+
+      let phoneNumber = "+923166950205"; 
+      let whatsappMessage = `Hello, my name is ${name}. My email is ${email}. Message: ${message}`;
+      let encodedMessage = encodeURIComponent(whatsappMessage);
+      
+      return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    }
+
+    document.querySelector(".contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      window.open(sendMessage(), "_blank");
+    });
+
+    document.getElementById("whatsappLink").addEventListener("click", function(event) {
+      event.preventDefault();
+      window.open(sendMessage(), "_blank");
+    });
+  </script>
+
+</body>
+</html>
